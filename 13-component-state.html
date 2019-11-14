@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .cc {
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        // stateful function component
+
+        // 16.0 function
+        // stateless component
+        // stateful component
+        function Hello(props) {
+
+        }
+
+        //flutter
+        //stateful component props state
+        class World extends React.Component {
+
+            //初始化状态值，通过constructor
+            constructor(props) {
+                super(props);
+                this.state = {
+                    title:"初始化的标题"
+                }
+            }
+
+            //updated this.xx update
+
+
+            //setState = render
+            render() {
+                this.state.title = "初始化的标题2"
+                console.log(this.state.title)
+                // this.setState({
+                //     title : "初始化的标题2222"
+                // }) // setState 重新render
+                return (
+                    <div>
+                        <h1>{this.state.title}</h1>
+
+                    </div>
+                );
+            }
+        }
+
+
+        ReactDOM.render(<World/>,document.querySelector("#app"))
+
+
+    })()
+</script>
+</body>
+</html>
