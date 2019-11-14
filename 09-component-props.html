@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .cc {
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        //组件目的 复用
+
+        function Student(props) {
+            props.name= "修改一下"
+            return <h1>{props.name}</h1>
+        }
+
+        function StudentList() {
+            return <ul>
+                <Student name={"张三"} age={20}/>
+                <Student name={"李四"} age={25}/>
+            </ul>
+        }
+
+        class Teacher extends React.Component {
+
+            constructor(props){
+                super()
+                console.log(props)
+            }
+
+            render() {
+                console.log(this.props)
+                return (
+                    <div>
+                       <h1>{this.props.name}</h1>
+                    </div>
+                );
+            }
+        }
+
+
+
+
+
+        ReactDOM.render(<Teacher name={"老王"}/>, document.querySelector("#app"))
+
+    })()
+</script>
+</body>
+</html>

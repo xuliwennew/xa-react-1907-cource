@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .cc {
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        //return 的东西是什么? view :
+        // string | valid react element jsx
+        // array
+        // 16.1 16.10
+        function Hello(props) {
+            console.log(props)
+            return [
+                <h1 key="1">hello world</h1>,
+                <h1 key="2">hello world2</h1>
+            ]
+        }
+
+
+
+        //component render props
+        class Student extends React.Component {
+
+            //定义view 指令= style
+            //创建组件的view(vnode tree)
+            render(){
+                console.log(this.props)
+                return <Hello/>
+            }
+        }
+
+        //render vue render vndoe diff mounted
+        ReactDOM.render(<Student a={1} b={2}/>,document.querySelector("#app"))
+
+
+    })()
+</script>
+</body>
+</html>

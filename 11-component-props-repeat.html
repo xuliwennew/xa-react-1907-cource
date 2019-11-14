@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .cc {
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        let data = [
+            {title:"vue in depth",des:"vue"},
+            {title:"react",des:"react"},
+            {title:"angular",des:"angular"}
+        ]
+
+
+        function Cource(props){
+            return <li>
+                <h1>{props.title}</h1>
+                <p>{props.des}</p>
+            </li>
+        }
+
+        //for in of foreach map
+        let courceList = <ul>
+            {
+                data.map((item,key)=>{
+                    return  <Cource key={key} title={item.title} des={item.des}/>
+                })
+            }
+        </ul>
+
+
+
+        ReactDOM.render(courceList, document.querySelector("#app"))
+
+    })()
+</script>
+</body>
+</html>
