@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <link href="bower_components/swiper/package/css/swiper.css" rel="stylesheet">
+
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+        }
+
+        .box1 {
+            width: 100%;
+            height: 300px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 100%;
+            height: 300px;
+            background-color: yellow;
+        }
+
+        .box3 {
+            width: 100%;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+<script src="bower_components/swiper/package/js/swiper.js"></script>
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        class ReactSwiperItem extends React.Component{
+            constructor(props) {
+                super(props);
+
+            }
+
+            render() {
+                return (
+                    <div className="swiper-slide box1">
+                        {
+                            this.props.children
+                        }
+                    </div>
+                );
+            }
+
+        }
+
+        class ReactSwiper extends React.Component {
+            constructor(props) {
+                super(props);
+
+            }
+
+            render() {
+                return (
+                    <div ref="s" className="swiper-container">
+                        <div className="swiper-wrapper">
+                            {
+                                this.props.children
+                            }
+                        </div>
+                        <div className="swiper-pagination"></div>
+                    </div>
+                );
+            }
+
+            componentDidMount(){
+               this._initSwiper()
+            }
+
+            _initSwiper(){
+                new Swiper(this.refs.s,this.props.options)
+            }
+
+        }
+
+
+        let view = <div>
+            <ReactSwiper options={{
+                direction:"vertical",
+                pagination:{
+                    el:".swiper-pagination"
+                }
+            }}>
+                <ReactSwiperItem>
+                    1
+                </ReactSwiperItem>
+                <ReactSwiperItem>
+                    2
+                </ReactSwiperItem>
+            </ReactSwiper>
+            <ReactSwiper options={{
+                direction:"horizontal",
+                effect:"cube",
+                pagination:{
+                    el:".swiper-pagination"
+                }
+            }}>
+                <ReactSwiperItem>
+                    1
+                </ReactSwiperItem>
+                <ReactSwiperItem>
+                    2
+                </ReactSwiperItem>
+            </ReactSwiper>
+        </div>
+
+        ReactDOM.render(view,document.querySelector("#app"))
+
+
+
+
+    })()
+</script>
+</body>
+</html>

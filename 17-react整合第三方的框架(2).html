@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .scroller {
+            width:100%;
+            height:600px;
+        }
+
+        .item {
+            width:100%;
+            height:200px;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+<script src="node_modules/better-scroll/dist/bscroll.js"></script>
+<script src="bower_components/react/babel-browser.min.js"></script>
+<script src="bower_components/react/react.development.js" ></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+
+<script type="text/babel">
+
+    (function () {
+
+        class ProductList extends React.Component{
+            constructor(props) {
+                super(props);
+                this.state={
+                    list:[1,1,1,1,1,1,1,1,1,1,1]
+                }
+            }
+
+            render() {
+                return (
+                    <div className="scroller">
+                       <div className="wrapper">
+                           <ul>
+                               {
+                                   this.state.list.map((item,key)=>{
+                                       return  <li key={key} className="item">
+                                               {item}
+                                       </li>
+                                   })
+                               }
+                           </ul>
+                       </div>
+                    </div>
+                );
+            }
+
+            componentDidMount(){
+                let scroll = new BScroll(".scroller")
+
+            }
+        }
+
+        ReactDOM.render(<ProductList/>,document.querySelector("#app"))
+
+    })()
+</script>
+</body>
+</html>

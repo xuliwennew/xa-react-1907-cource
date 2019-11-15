@@ -2,12 +2,13 @@ const path = require("path")
 
 
 module.exports = {
-    entry:{
-        app:path.resolve(__dirname,"..","single-component","main.js")
-    },
+    entry:[
+        "@babel/polyfill",
+        path.resolve(__dirname,"..","carts","main.js")
+    ],
     output: {
         filename: "app.bundle.js",
-        path:path.resolve(__dirname,"..","single-component")
+        path:path.resolve(__dirname,"..","carts")
     },
     resolve: {
         extensions: [".css",".js",".jsx"]
@@ -27,6 +28,14 @@ module.exports = {
                 query:{
                     presets:["@babel/preset-react","@babel/preset-env"]
                 }
+            },
+            {
+                test:/\.css$/,
+                loaders:"style-loader!css-loader"
+            },
+            {
+                test:/\.(jpg|gif|png)$/,
+                loaders:'url-loader'
             }
         ]
     }
