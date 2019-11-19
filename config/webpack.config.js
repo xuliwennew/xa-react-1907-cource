@@ -4,11 +4,11 @@ const path = require("path")
 module.exports = {
     entry:[
         "@babel/polyfill",
-        path.resolve(__dirname,"..","carts","main.js")
+        path.resolve(__dirname,"..","24-context-api","main.js")
     ],
     output: {
         filename: "app.bundle.js",
-        path:path.resolve(__dirname,"..","carts")
+        path:path.resolve(__dirname,"..","24-context-api")
     },
     resolve: {
         extensions: [".css",".js",".jsx"]
