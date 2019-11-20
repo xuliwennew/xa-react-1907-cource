@@ -27,95 +27,43 @@
     (function () {
 
 
-
-        class Counter extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = {
-                    num:0
+        function hOC(WrapperComponent){
+            return class extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state= {
+                        title:"共享的数据标题"
+                    }
                 }
-                console.log("#1 constructor....")
+
+                render() {
+                    return (
+                        <div>
+                            <WrapperComponent title={this.state.title}/>;
+                        </div>
+                    )
+
+                }
             }
-
-            componentWillMount(){
-                console.log("#2 componentWillMount....")
-            }
-
-            //react + vue
-            render() {
-                console.log("#3 render....")
-                return (
-                    <div>
-                        <h1>{this.state.num}</h1>
-                    </div>
-                );
-            }
-
-            componentDidMount(){
-                console.log("#4 componentDidMount....")
-            }
-
-            shouldComponentUpdate(nextProps,nextState){
-                 return true
-            }
-
-            componentWillUpdate(){
-                console.log("#6 componentWillUpdate....")
-            }
-
-            componentDidUpdate(){
-                console.log("#7 componentDidUpdate....")
-            }
-
-            update(){
-                this.setState({
-                    num:++this.state.num
-                })
-            }
-
-
-            componentWillUnmount(){
-                console.log("#8 componentWillUnmount....")
-            }
-
-            componentWillReceiveProps(){
-                console.log("#4 componentWillReceiveProps....")
-            }
-
         }
 
-        class CounterContainer extends React.Component{
-            constructor(props) {
-                super(props);
-                this.state = {
-                    title:"传给子组件"
-                }
-            }
+        function Hello(props) {
+            return <h1>{props.title}</h1>
+        }
 
-            render() {
-                return (
-                    <div>
-                        <Counter ref="c" title={this.state.title}/>
-                        <button onClick={this.update.bind(this)}>更新Title</button>
-                        <button onClick={this.updateNum.bind(this)}>+</button>
-                    </div>
-                );
-            }
-
-            update(){
-                this.setState({
-                    title:"修改了title"
-                })
-            }
-
-            updateNum(){
-                this.refs.c.update()
-            }
-
+        function World(props) {
+            return <div>
+                <h1>hello {props.title}</h1>
+            </div>
         }
 
 
-        ReactDOM.render(<CounterContainer/>,document.querySelector("#app"))
+        let MyHello = hOC(Hello)
+        let MyWorld = hOC(World)
+
+
+
+        ReactDOM.render(<MyWorld/>,document.querySelector("#app"))
 
 
     })()

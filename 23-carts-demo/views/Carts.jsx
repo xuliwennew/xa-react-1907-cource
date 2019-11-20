@@ -5,6 +5,7 @@ import Shop from "../components/carts/Shop"
 import "../assets/carts.css"
 import CartsApi from "../apis/CartsApi"
 import {MyLoading} from "../components/common/Loading";
+import Immutable from "immutable"
 
 export class Carts extends Component {
     constructor(props) {
@@ -51,7 +52,7 @@ export class Carts extends Component {
     cartCheckAll() {
 
         // copy
-        let oldCart = this.state.cartInfo;
+        let oldCart =  this.state.cartInfo;
         //cartinfo 的状态
         let checked = !this.state.cartInfo.checked;
         oldCart.checked = checked

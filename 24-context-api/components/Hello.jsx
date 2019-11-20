@@ -1,7 +1,7 @@
 import React,{Component} from "react"
-import World from "./World"
 import {HelloContext} from "../context/HelloContext";
-
+import MyLoading from "./Loading";
+const World = React.lazy(() => import('././World'));
 
 export default class Hello extends Component {
     constructor(props) {
@@ -15,7 +15,9 @@ export default class Hello extends Component {
     render() {
         return (
             <HelloContext.Provider value={{title:this.state.title}}>
-                <World/>
+                <React.Suspense fallback={<MyLoading />}>
+                   <World/>
+                </React.Suspense>
             </HelloContext.Provider>
             )
         ;

@@ -4,14 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --config=./config/webpack.config.js --mode=development -w"
+    "router": "webpack --config=./config/webpack.router.config.js --mode=development -w",
+    "context": "webpack --config=./config/webpack.context.config.js --mode=development -w",
+    "cart": "webpack --config=./config/webpack.cart.config.js --mode=development -w",
+    "dev": "webpack --config=./config/webpack.config.js --mode=development -w",
+    "ad": "webpack --config=./config/webpack.ad.config.js --mode=development -w"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "antd-mobile": "^2.3.1",
     "better-scroll": "^1.15.2",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
     "swiper": "^5.2.0"
   },
   "devDependencies": {
