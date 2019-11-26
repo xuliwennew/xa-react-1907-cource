@@ -1,0 +1,24 @@
+npm i mobx mobx-react --save
+npm i @babel/plugin-proposal-class-properties --save-dev
+npm i @babel/plugin-proposal-decorators --save-dev
+
+
+{
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+  ]
+}
+
+https://babeljs.io/docs/en/babel-plugin-proposal-decorators
+
+
+import {observable} from 'mobx';
+class CounterStore {
+  @observable counter = 0;
+  increment() { this.counter++;
+  console.log("increment", this.counter); }
+  decrement() { this.counter--;
+  console.log("decrement", this.counter); }
+}
+export default new CounterStore();

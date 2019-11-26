@@ -14,111 +14,23 @@
 </head>
 <body>
 
-<div id="app">
+<button onclick="show()">click me</button>
 
-</div>
-
-<script src="bower_components/react/babel-browser.min.js"></script>
-<script src="bower_components/react/react.development.js" ></script>
-<script src="bower_components/react/react-dom.development.js"></script>
-
-<script type="text/babel">
-
-    (function () {
-
-
-
-        class Counter extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = {
-                    num:0
-                }
-                console.log("#1 constructor....")
-            }
-
-            componentWillMount(){
-                console.log("#2 componentWillMount....")
-            }
-
-            //react + vue
-            render() {
-                console.log("#3 render....")
-                return (
-                    <div>
-                        <h1>{this.state.num}</h1>
-                    </div>
-                );
-            }
-
-            componentDidMount(){
-                console.log("#4 componentDidMount....")
-            }
-
-            shouldComponentUpdate(nextProps,nextState){
-                 return true
-            }
-
-            componentWillUpdate(){
-                console.log("#6 componentWillUpdate....")
-            }
-
-            componentDidUpdate(){
-                console.log("#7 componentDidUpdate....")
-            }
-
-            update(){
-                this.setState({
-                    num:++this.state.num
-                })
-            }
-
-
-            componentWillUnmount(){
-                console.log("#8 componentWillUnmount....")
-            }
-
-            componentWillReceiveProps(){
-                console.log("#4 componentWillReceiveProps....")
-            }
-
-        }
-
-        class CounterContainer extends React.Component{
-            constructor(props) {
-                super(props);
-                this.state = {
-                    title:"传给子组件"
-                }
-            }
-
-            render() {
-                return (
-                    <div>
-                        <Counter ref="c" title={this.state.title}/>
-                        <button onClick={this.update.bind(this)}>更新Title</button>
-                        <button onClick={this.updateNum.bind(this)}>+</button>
-                    </div>
-                );
-            }
-
-            update(){
-                this.setState({
-                    title:"修改了title"
-                })
-            }
-
-            updateNum(){
-                this.refs.c.update()
-            }
-
-        }
-
-
-        ReactDOM.render(<CounterContainer/>,document.querySelector("#app"))
-
-
-    })()
+<script>
+    function show() {
+        fetch("http://39.98.112.201:8888/user/login",{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                name:"李佳豪",
+                pwd:"123456"
+            })
+        }).then(res=> res.json().then(data=>{
+            console.log(data)
+        }))
+    }
 </script>
 </body>
 </html>
