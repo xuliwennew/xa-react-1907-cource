@@ -12,7 +12,8 @@
     "ad": "webpack --config=./config/webpack.ad.config.js --mode=development -w",
     "ant": "webpack --config=./config/webpack.ant.config.js --mode=development -w",
     "mobx": "webpack --config=./config/webpack.mobx.config.js --mode=development -w",
-    "hooks": "webpack --config=./config/webpack.hook.config.js --mode=development -w"
+    "hooks": "webpack --config=./config/webpack.hook.config.js --mode=development -w",
+    "redux": "webpack --config=./config/webpack.redux.config.js --mode=development -w"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +27,9 @@
     "mobx-react": "^6.1.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
     "swiper": "^5.2.0"
   },
   "devDependencies": {

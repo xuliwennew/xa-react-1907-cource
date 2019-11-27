@@ -6,6 +6,6 @@ function Hello(){
     return <h1>hello world</h1>
 }
 
-let str = ReactDOMServer.renderToString(<Hello/>)
+let str = ReactDOMServer.renderToStaticMarkup(<Hello/>)
 console.log(str)
 
